@@ -1,3 +1,10 @@
+/*
+ * @Date: 2024-05-10 12:13:58
+ * @Author: 枫
+ * @LastEditors: 枫
+ * @description: description
+ * @LastEditTime: 2024-05-10 22:58:05
+ */
 import {
   Config,
   Init,
@@ -27,8 +34,6 @@ export class MinIOServiceFactory extends ServiceFactory<Client> {
   }
 
   async createClient(config: ClientOptions): Promise<Client> {
-    console.log(config);
-
     this.logger.info(
       '[midway:minIO] connecting with accessKey: %s',
       config.accessKey
@@ -61,6 +66,8 @@ export class MinIOService implements Client {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface MinIOService extends Client {}
+export interface MinIOService extends Client {
+  // empty
+}
 
 delegateTargetPrototypeMethod(MinIOService, [Client]);
